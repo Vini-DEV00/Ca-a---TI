@@ -1,0 +1,50 @@
+html, body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	color: #0b1f3d;
+	margin: 0;
+	padding: 8px;
+	box-sizing: border-box;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	background: radial-gradient(circle at top center, #e8f4ff 0%, #ffffff 30%, #c8ddff 70%, #0f2d61 100%);
+	text-align: center;
+}
+
+h1 {
+  	color: #2e19eb;
+ 	font-family: verdana;
+}
+
+.menu {
+	display: block;
+	font-size: 20px;
+	margin: auto;
+	margin-bottom: 5px;
+	border-style: solid;
+	border-width: 3px;
+	width: 20%;
+	padding: 5px;
+	background-color: rgb(61, 33, 219);
+	border: 3px solid rgb(255, 255, 255);
+	text-align: center;
+	text-decoration: none;
+	color: rgb(66, 26, 245);
+	padding: 5px 0px 5px 0px;
+}
+
+.menu:hover{
+	background-color: #aaa;
+}
+
+.menu:visited{
+	color: rgb(252, 252, 252);
+}
+
+img.sobre {
+	max-width:25%;
+	max-height:25%;
+}
