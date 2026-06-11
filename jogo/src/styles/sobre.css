@@ -1,0 +1,16 @@
+.sobre {
+	width: 400px;
+	height: 400px;
+}
+
+.sobrecontainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center; 
+}
+
+.text {
+	color: white;
+	text-align: center;
+}

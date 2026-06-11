@@ -1,50 +1,74 @@
 html, body {
-	position: relative;
 	width: 100%;
 	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-	color: #0b1f3d;
-	margin: 0;
-	padding: 8px;
-	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	background: radial-gradient(circle at top center, #e8f4ff 0%, #ffffff 30%, #c8ddff 70%, #0f2d61 100%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-family: Arial, Helvetica, sans-serif;
+
+	background: linear-gradient(
+		180deg,
+		#f6f0ff 0%,
+		#7541ca 50%,
+		#5218bf 100%
+	);
+}
+
+.container {
 	text-align: center;
 }
 
 h1 {
-  	color: #2e19eb;
- 	font-family: verdana;
+	font-size: 5rem;
+	color: white;
+	text-shadow: 4px 4px 0px #7b2cff;
+	margin-bottom: 50px;
 }
 
 .menu {
-	display: block;
-	font-size: 20px;
-	margin: auto;
-	margin-bottom: 5px;
-	border-style: solid;
-	border-width: 3px;
-	width: 20%;
-	padding: 5px;
-	background-color: rgb(61, 33, 219);
-	border: 3px solid rgb(255, 255, 255);
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: center;
+}
+
+.botao {
+	width: 300px;
+
+	padding: 15px;
+
+	background: linear-gradient(
+		90deg,
+		#5d1cd6,
+		#5d1cd6
+	);
+
+	color: white;
+	font-size: 1.5rem;
+	font-weight: bold;
+
 	text-decoration: none;
-	color: rgb(66, 26, 245);
-	padding: 5px 0px 5px 0px;
+
+	border-radius: 40px;
+
+	box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+
+	transition: 0.3s;
 }
 
-.menu:hover{
-	background-color: #aaa;
+.botao:hover {
+	transform: scale(1.05);
+	background: linear-gradient(
+		90deg,
+		#4f14bd,
+		#4f14bd
+	);
 }
 
-.menu:visited{
-	color: rgb(252, 252, 252);
-}
 
-img.sobre {
-	max-width:25%;
-	max-height:25%;
-}
