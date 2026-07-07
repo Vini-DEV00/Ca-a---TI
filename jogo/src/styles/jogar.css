@@ -1,21 +1,129 @@
-table {
-    margin-left: auto;
-    margin-right: auto;
-    border-collapse: collapse;
-}
 
-.cell {
-    border-width: 2px;
-    text-align: center;
-    height: 35px;
-    width:35px;
-    cursor:pointer;
-    background-color: white;
-}
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-.selected {
-    background-color: #8045ec;
-    border-width: 5px;
-}
+    body {
+        background: #1e1e2f;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        padding: 30px;
+        min-height: 100vh;
+    }
 
+    h1 {
+        color: white;
+        font-size: 2rem;
+    }
+
+    .tabuleiro {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        background: #292942;
+        padding: 15px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0,0,0,.4);
+    }
+
+    .linha {
+        display: flex;
+        gap: 4px;
+    }
+
+    .letra {
+        width: 42px;
+        height: 42px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background: #404060;
+        color: white;
+
+        border-radius: 8px;
+
+        cursor: pointer;
+        user-select: none;
+
+        font-weight: bold;
+        font-size: 20px;
+
+        transition: .15s;
+    }
+
+    .letra:hover {
+        transform: scale(1.08);
+        background: #555580;
+    }
+
+    .selecionada {
+        background: #2196f3;
+        color: white;
+        transform: scale(1.08);
+    }
+
+    .encontrada {
+        background: #4caf50;
+        color: white;
+    }
+
+    .painel {
+        width: 100%;
+        max-width: 700px;
+
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+    }
+
+    .lista {
+        background: #292942;
+        color: white;
+        padding: 20px;
+        border-radius: 12px;
+        min-width: 220px;
+    }
+
+    .lista h2 {
+        margin-bottom: 15px;
+    }
+
+    .lista ul {
+        list-style: none;
+    }
+
+    .lista li {
+        padding: 6px 0;
+        font-weight: bold;
+    }
+
+    .lista li.encontrada {
+        color: #4caf50;
+        background: transparent;
+        text-decoration: line-through;
+    }
+
+    @media (max-width: 768px) {
+
+        .letra{
+            width:32px;
+            height:32px;
+            font-size:16px;
+        }
+
+        .painel{
+            flex-direction:column;
+            align-items:center;
+        }
+
+    }

@@ -1,6 +1,6 @@
 .sobre {
-	width: 400px;
-	height: 400px;
+	width: 200px;
+	height: auto;
 }
 
 .sobrecontainer {
@@ -11,6 +11,50 @@
 }
 
 .text {
+    color: white;
+    text-align: center;
+    font-size: 25px; 
+}
+
+.back-button{
+	width: 300px;
+
+	padding: 15px;
+
+	background: linear-gradient(
+		90deg,
+		#ff2bd6,
+		#ff6bf0
+	);
+
 	color: white;
-	text-align: center;
+	font-size: 1.5rem;
+	font-weight: bold;
+
+	text-decoration: none;
+
+	border-radius: 40px;
+	border: 2px solid white;
+
+	box-shadow:
+		0 0 10px #ff2bd6,
+		0 0 20px #ff2bd6,
+		0 5px 10px rgba(0,0,0,0.2);
+
+	transition: all 0.3s ease;
+}
+
+.back-button:hover {
+	transform: scale(1.08);
+
+	background: linear-gradient(
+		90deg,
+		#ff00cc,
+		#ff4de1
+	);
+
+	box-shadow:
+		0 0 15px #ff00cc,
+		0 0 30px #ff00cc,
+		0 0 50px #ff00cc;
 }
