@@ -1,7 +1,5 @@
 <script>
-    // ==========================
-    // CONFIGURAÇÃO
-    // ==========================
+    
     let selecionando = false;
     let selecao = [];
     let palavrasEncontradas = [];
@@ -13,7 +11,6 @@
         "PHP",
         "PYTHON",
         "JAVASCRIPT",
-        "C",
         "CPP",
         "CSHARP",
         "GO",
@@ -25,6 +22,18 @@
         "SQL"
     ];
 
+    // cores para cada palavra (index correspondendo ao índice em `palavras`)
+    const cores = [
+        '#E53935', '#8E24AA', '#3949AB', '#1E88E5', '#00ACC1', '#00897B', '#43A047', '#7CB342', '#C0CA33', '#FDD835', '#FB8C00', '#6D4C41', '#78909C'
+    ];
+
+    function getCor(palavra) {
+        if (!palavra) return '';
+        const idx = palavras.indexOf(palavra);
+        if (idx === -1) return '';
+        return cores[idx % cores.length];
+    }
+
     const direcoes = [
         { x: 1, y: 0 },   // Horizontal →
         { x: 0, y: 1 },   // Vertical ↓
@@ -32,9 +41,6 @@
         { x: -1, y: 1 }   // Diagonal ↙
     ];
 
-    // ==========================
-    // TABULEIRO
-    // ==========================
 
     let grade = [];
 
@@ -48,17 +54,14 @@
                 linha.push({
                     letra: "",
                     selecionada: false,
-                    encontrada: false
+                    encontrada: false,
+                    palavra: null
                 });
             }
 
             grade.push(linha);
         }
     }
-
-    // ==========================
-    // INSERIR PALAVRAS
-    // ==========================
 
     function cabePalavra(palavra, x, y, dx, dy) {
 
@@ -121,6 +124,7 @@
                     const ny = y + direcao.y * i;
 
                     grade[ny][nx].letra = palavra[i];
+                    grade[ny][nx].palavra = palavra;
 
                 }
 
@@ -131,9 +135,6 @@
 
     }
 
-    // ==========================
-    // LETRAS ALEATÓRIAS
-    // ==========================
 
     function preencherLetras() {
 
@@ -165,13 +166,14 @@
     
 
 function iniciarSelecao(x, y) {
-
+    console.log("clicou")
     limparSelecao();
 
     selecionando = true;
     direcaoAtual = null;
 
     grade[y][x].selecionada = true;
+    grade = [...grade];
 
     selecao.push({
         x,
@@ -192,7 +194,7 @@ function obterDirecao(x1, y1, x2, y2) {
 
 }
 function arrastarSelecao(x, y) {
-
+    console.log("arrastou")
     if (!selecionando) return;
 
     if (grade[y][x].encontrada) return;
@@ -203,9 +205,7 @@ function arrastarSelecao(x, y) {
 
     if (existe) return;
 
-    //-------------------------------------
-    // PRIMEIRA DIREÇÃO
-    //-------------------------------------
+    
 
     if (selecao.length === 1) {
 
@@ -220,9 +220,6 @@ function arrastarSelecao(x, y) {
 
     }
 
-    //-------------------------------------
-    // A partir da terceira letra
-    //-------------------------------------
 
     if (selecao.length >= 2) {
 
@@ -247,6 +244,7 @@ function arrastarSelecao(x, y) {
         y,
         letra: grade[y][x].letra
     });
+    grade = [...grade];
 
 }
 function finalizarSelecao() {
@@ -263,6 +261,7 @@ function limparSelecao() {
     selecao.forEach(l => {
         grade[l.y][l.x].selecionada = false;
     });
+    grade = [...grade];
 
     selecao = [];
 
@@ -290,32 +289,26 @@ function verificarSelecao() {
         limparSelecao();
 
     }
-     const ultima = selecao[selecao.length - 1];
-
-    if (
-      x !== ultima.x + direcaoAtual.dx ||
-      y !== ultima.y + direcaoAtual.dy
-    ) {
-     return;
- }
+    
 
 }
 function marcarEncontrada(nome) {
 
-    palavrasEncontradas.push(nome);
+    // garantir reatividade em Svelte ao atualizar o array
+    palavrasEncontradas = [...palavrasEncontradas, nome];
 
     selecao.forEach(l => {
-
         grade[l.y][l.x].encontrada = true;
         grade[l.y][l.x].selecionada = false;
-
     });
 
     selecao = [];
+    grade = [...grade];
 
 }
     </script>
 <div class="container">
+    <a class="back-button" href="/">BACK</a>    
 
     <h1>Caça-Palavras</h1>
 
@@ -333,9 +326,10 @@ function marcarEncontrada(nome) {
                             class="letra"
                             class:selecionada={celula.selecionada}
                             class:encontrada={celula.encontrada}
+                            style={celula.encontrada ? `background: ${getCor(celula.palavra)}; color: white;` : ''}
 
-                            onmousedown={() => iniciarSelecao(x,y)}
-                            onmouseenter={() => arrastarSelecao(x,y)}
+                            on:mousedown={() => iniciarSelecao(x,y)}
+                            on:mouseenter={() => arrastarSelecao(x,y)}
                         >
                             {celula.letra}
                         </div>
@@ -356,7 +350,10 @@ function marcarEncontrada(nome) {
 
                 {#each palavras as palavra}
 
-                    <li class:encontrada={palavrasEncontradas.includes(palavra)}>
+                    <li
+                        class:encontrada={palavrasEncontradas.includes(palavra)}
+                        style={palavrasEncontradas.includes(palavra) ? `color: ${getCor(palavra)}; text-decoration: line-through;` : ''}
+                    >
                         {palavra}
                     </li>
 
@@ -370,4 +367,4 @@ function marcarEncontrada(nome) {
 
 </div>
 
-<svelte:window onmouseup={finalizarSelecao}/>
+<svelte:window on:mouseup={finalizarSelecao}/>

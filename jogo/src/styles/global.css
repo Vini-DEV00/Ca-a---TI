@@ -12,16 +12,18 @@ body {
 
 	font-family: Arial, Helvetica, sans-serif;
 
-	background: linear-gradient(
-		180deg,
-		#f6f0ff 0%,
-		#7541ca 50%,
-		#5218bf 100%
-	);
+	background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35));
 }
 
 .container {
+	position: relative;
 	text-align: center;
+	min-height: 100vh;
+	overflow: hidden;
+	width: 100%;
+	max-width: 1800px;
+	padding: 40px 24px;
+	box-sizing: border-box;
 }
 
 h1 {
@@ -32,10 +34,35 @@ h1 {
 }
 
 .menu {
-	display: flex;
-	flex-direction: column;
+	display:flex;
+	flex-direction: row;
 	gap: 20px;
+	justify-content:center;
 	align-items: center;
+	position: absolute;
+	left: 50%;
+	bottom: 40px;
+	transform: translateX(-50%);
+	z-index: 1;
+}
+
+@media (max-width: 1280px) {
+	.menu {
+		flex-direction: column;
+		width: calc(100% - 40px);
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+.background {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	pointer-events: none;
+	z-index: 0;
 }
 
 .botao {
@@ -45,8 +72,8 @@ h1 {
 
 	background: linear-gradient(
 		90deg,
-		#ff2bd6,
-		#ff6bf0
+		rgba(255, 43, 214, 0.75),
+		rgba(255, 107, 240, 0.75)
 	);
 
 	color: white;
@@ -56,11 +83,11 @@ h1 {
 	text-decoration: none;
 
 	border-radius: 40px;
-	border: 2px solid white;
+	border: 2px solid rgba(255, 255, 255, 0.85);
 
 	box-shadow:
-		0 0 10px #ff2bd6,
-		0 0 20px #ff2bd6,
+		0 0 10px rgba(255, 43, 214, 0.5),
+		0 0 20px rgba(255, 43, 214, 0.35),
 		0 5px 10px rgba(0,0,0,0.2);
 
 	transition: all 0.3s ease;
@@ -71,13 +98,13 @@ h1 {
 
 	background: linear-gradient(
 		90deg,
-		#ff00cc,
-		#ff4de1
+		rgba(255, 0, 204, 0.75),
+		rgba(255, 77, 225, 0.75)
 	);
 
 	box-shadow:
-		0 0 15px #ff00cc,
-		0 0 30px #ff00cc,
-		0 0 50px #ff00cc;
+		0 0 15px rgba(255, 0, 204, 0.45),
+		0 0 30px rgba(255, 0, 204, 0.3),
+		0 0 50px rgba(255, 0, 204, 0.25);
 }
 
