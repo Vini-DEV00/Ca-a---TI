@@ -2,7 +2,7 @@
 
     <a class="back-button" href="/">BACK</a>
 
-    <h1>Sobre</h1>
+    <h1>ABOUT</h1>
 
     <img class="sobre" src="/images/logoIFPE.png" alt="logo IFPE"/>
 

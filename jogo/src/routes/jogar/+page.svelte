@@ -5,7 +5,7 @@
     let palavrasEncontradas = [];
     let direcaoAtual = null;
     const tamanho = 15;
-
+    let jogoFinalizado = false;
     const palavras = [
         "JAVA",
         "PHP",
@@ -196,9 +196,6 @@ function obterDirecao(x1, y1, x2, y2) {
 function arrastarSelecao(x, y) {
     console.log("arrastou")
     if (!selecionando) return;
-
-    if (grade[y][x].encontrada) return;
-
     const existe = selecao.some(
         l => l.x === x && l.y === y
     );
@@ -306,11 +303,16 @@ function marcarEncontrada(nome) {
     grade = [...grade];
 
 }
+    
+    // marca o jogo como finalizado quando todas as palavras forem encontradas
+    $: jogoFinalizado = palavrasEncontradas.length === palavras.length;
     </script>
-<div class="container">
-    <a class="back-button" href="/">BACK</a>    
+{#if !jogoFinalizado}
 
-    <h1>Caça-Palavras</h1>
+<div class="container">
+    <a class="back-button" href="/">BACK</a>
+
+    <h1>Hunt-TI</h1>
 
     <div class="painel">
 
@@ -366,5 +368,26 @@ function marcarEncontrada(nome) {
     </div>
 
 </div>
+
+{:else}
+
+<div class="fim">
+    <h1>🎉 MISSION COMPLETE!</h1>
+
+    <h2>Congratulations!</h2>
+
+    <p>
+        You found all the programming languages.
+    </p>
+
+    <p>
+        Welcome to the masters' group of <strong>HUNT-TI</strong>! 💻🏆
+    </p>
+
+    <button class="play again" on:click={() => { iniciar(); palavrasEncontradas = []; jogoFinalizado = false; }}>play again</button>
+
+</div>
+
+{/if}
 
 <svelte:window on:mouseup={finalizarSelecao}/>
