@@ -22,7 +22,6 @@
         "SQL"
     ];
 
-    // cores para cada palavra (index correspondendo ao índice em `palavras`)
     const cores = [
         '#E53935', '#8E24AA', '#3949AB', '#1E88E5', '#00ACC1', '#00897B', '#43A047', '#7CB342', '#C0CA33', '#FDD835', '#FB8C00', '#6D4C41', '#78909C'
     ];
@@ -291,7 +290,7 @@ function verificarSelecao() {
 }
 function marcarEncontrada(nome) {
 
-    // garantir reatividade em Svelte ao atualizar o array
+    
     palavrasEncontradas = [...palavrasEncontradas, nome];
 
     selecao.forEach(l => {
@@ -304,7 +303,7 @@ function marcarEncontrada(nome) {
 
 }
     
-    // marca o jogo como finalizado quando todas as palavras forem encontradas
+
     $: jogoFinalizado = palavrasEncontradas.length === palavras.length;
     </script>
 {#if !jogoFinalizado}
@@ -346,7 +345,7 @@ function marcarEncontrada(nome) {
 
         <div class="lista">
 
-            <h2>Palavras</h2>
+            <h2>Words</h2>
 
             <ul>
 
@@ -384,7 +383,7 @@ function marcarEncontrada(nome) {
         Welcome to the masters' group of <strong>HUNT-TI</strong>! 💻🏆
     </p>
 
-    <button class="play again" on:click={() => { iniciar(); palavrasEncontradas = []; jogoFinalizado = false; }}>play again</button>
+    <button class="playAgain" on:click={() => { iniciar(); palavrasEncontradas = []; jogoFinalizado = false; }}>play again</button>
 
 </div>
 

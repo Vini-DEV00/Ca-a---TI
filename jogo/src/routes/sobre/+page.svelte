@@ -7,17 +7,15 @@
     <img class="sobre" src="/images/logoIFPE.png" alt="logo IFPE"/>
 
     <p class="text">
-        Autores:
+        Authors: <br>
         Vinício Lima dos Santos Brito <br>
-        Matheus Henrique <br>
-        João Pedro Gondim <br>
-        Daniel Alves <br>
-        Gilberto Nascimento
+        Matheus Henrique da Silva Nascimento Ferreira <br>
+        Gilberto Nascimento Maranhão de Sá
     </p>
 
     <p class="text">
-        Este jogo foi criado para desafiar os conhecimentos dos jogadores <br>
-        sobre o mundo da programação...
+        This game was created to challenge players' <br>
+        knowledge of the world of programming...
     </p>
 
 </div>

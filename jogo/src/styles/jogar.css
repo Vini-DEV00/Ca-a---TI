@@ -202,19 +202,37 @@
         color: #d6d6e8;
     }
 
-    .jogar-novamente {
+    .playAgain {
         margin-top: 20px;
         padding: 10px 18px;
-        background: linear-gradient(90deg,#4caf50,#61d07d);
-        color: #072;
+        background: linear-gradient(
+            90deg,
+            #ff2bd6,
+            #ff6bf0
+        );
+        color: white;
         border: none;
         border-radius: 10px;
         font-weight: bold;
+        font-size: 0.9rem;
+        text-decoration: none;
         cursor: pointer;
-        box-shadow: 0 6px 18px rgba(76,175,80,0.25);
+        box-shadow:
+            0 0 6px #ff2bd6,
+            0 0 12px #ff2bd6,
+            0 3px 6px rgba(0,0,0,0.2);
     }
 
-    .jogar-novamente:hover {
+    .playAgain:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 24px rgba(76,175,80,0.35);
+        box-shadow:
+            0 0 12px #ff00cc,
+            0 0 24px #ff00cc,
+            0 0 40px #ff00cc;
+        background: linear-gradient(
+            90deg,
+            #ff2bd6,
+            #ff6bf0
+        );
+        
     }
